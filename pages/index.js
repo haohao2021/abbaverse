@@ -1,4 +1,3 @@
-// pages/index.js
 import React, { useState, useEffect } from "react";
 import Cobe from "../components/Cobe";
 import Timeline from "../components/Timeline";
@@ -11,8 +10,7 @@ export default function Home() {
   const [filteredData, setFilteredData] = useState([]);
   const [markers, setMarkers] = useState([]);
   const [timelineData, setTimelineData] = useState([]);
-  const [searchResults, setSearchResults] = useState({}); // 新增状态来存储搜索结果
-
+  const [searchResults, setSearchResults] = useState({});
   useEffect(() => {
     setSongData(data);
   }, []);
@@ -93,7 +91,7 @@ export default function Home() {
         </div>
       </main>
     </div>
-  );
+  )
 }
 
 // =================
