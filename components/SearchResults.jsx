@@ -1,10 +1,10 @@
-
-
 function SearchResults({ results, onSelectSong }) {
     return (
-      <ul>
+      <ul className="space-y-2">
         {Object.entries(results).map(([songKey, songValue]) => (
-          <li key={songKey} onClick={() => onSelectSong(songValue)}>
+          <li key={songKey} onClick={() => onSelectSong(songValue)}
+          className="cursor-pointer p-2 hover:bg-gray-700 rounded-md"
+          >
             {songValue.original_song}
           </li>
         ))}
@@ -13,4 +13,6 @@ function SearchResults({ results, onSelectSong }) {
   }
   
   export default SearchResults;
+
+
   

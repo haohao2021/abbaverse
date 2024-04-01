@@ -5,21 +5,18 @@ const FilterPanel = ({ songData, onSearch, onFilter }) => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [searchResults, setSearchResults] = useState([]);
 
-
   const handleSearchChange = (event) => {
     const inputValue = event.target.value;
     setSearchTerm(inputValue);
-  
+
     const filteredData = Object.entries(songData)
-      .filter(
-        ([key, song]) =>
-          song.original_song.toLowerCase().includes(inputValue.toLowerCase())
+      .filter(([key, song]) =>
+        song.original_song.toLowerCase().includes(inputValue.toLowerCase())
       )
       .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-  
+
     onSearch(filteredData);
   };
-  
 
   const handleSearchSubmit = (event) => {
     if (event.key === "Enter") {
@@ -51,21 +48,21 @@ const FilterPanel = ({ songData, onSearch, onFilter }) => {
   };
 
   return (
-    <div className="filter-panel">
-      <div className="search-container">
+    <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg">
+      <div className="mb-4">
         <input
           type="text"
           placeholder="Search by song title"
           value={searchTerm}
           onChange={handleSearchChange}
           onKeyDown={handleSearchSubmit}
-          className="search-input"
+          className="w-full p-2 bg-gray-700 text-white rounded-md border-2 border-gray-600 focus:outline-none focus:border-blue-500"
           name="searchTitle"
           id="searchTitleInput"
         />
       </div>
-      <div className="year-slider-container">
-        <label htmlFor="year-slider" className="year-slider-label">
+      <div>
+        <label htmlFor="year-slider" className="block text-sm font-medium text-gray-400">
           Release Year: {selectedYear}
         </label>
         <input
@@ -74,12 +71,13 @@ const FilterPanel = ({ songData, onSearch, onFilter }) => {
           max={new Date().getFullYear()} // 当前年份
           value={selectedYear}
           onChange={handleYearChange}
-          className="year-slider"
+          className="w-full h-2 bg-gray-700 rounded-md cursor-pointer focus:outline-none focus:ring-0"
           id="year-slider"
         />
       </div>
     </div>
   );
+  
 };
 
 export default FilterPanel;

@@ -1,14 +1,16 @@
 // pages/index.js
 import React, { useState, useEffect } from "react";
 import Cobe from "../components/Cobe";
+import Timeline from "../components/Timeline";
 import FilterPanel from "../components/FilterPanel";
 import SearchResults from "../components/SearchResults";
 import data from "../public/data.json";
 
 export default function Home() {
-  // 之前在 App.jsx 中的状态和逻辑可以放在这里
   const [songData, setSongData] = useState({});
   const [filteredData, setFilteredData] = useState([]);
+  const [markers, setMarkers] = useState([]);
+  const [timelineData, setTimelineData] = useState([]);
   const [searchResults, setSearchResults] = useState({}); // 新增状态来存储搜索结果
 
   useEffect(() => {
@@ -19,32 +21,75 @@ export default function Home() {
     setSearchResults(filteredData); // 更新搜索结果而不是直接过滤标记
   };
 
-  // 实现updateGlobalMarkers函数来根据用户选择的单曲更新标记
-  const updateGlobalMarkers = (selectedSong) => {
+  const updateRender = (selectedSong) => {
     const markers = Object.values(selectedSong.covers).flatMap((cover) =>
       cover.details.map((detail) => ({
         location: cover.location,
-        size: (detail.count * 0.01).toFixed(2), // 假设每个cover有count属性
+        size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
       }))
     );
-    setFilteredData(markers);
+
+    const timelineData = Object.values(selectedSong.covers).flatMap((cover) =>
+      cover.details.map((detail) => ({
+        song: detail.song_name,
+        artist: detail.artist,
+        date: new Date(detail.release_year, 0), // 确保这里返回了一个对象
+        song_url: detail.song_url,
+        artist_url: detail.artist_url
+      }))
+    );
+
+    setMarkers(markers);
+    setTimelineData(timelineData);
   };
 
-  return (
-    <div className="App">
-      <header className="App-header">ABBAVERSE</header>
+  // const updateGlobalMarkers = (selectedSong) => {
+  //   const markers = Object.values(selectedSong.covers).flatMap((cover) =>
+  //     cover.details.map((detail) => ({
+  //       location: cover.location,
+  //       size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
+  //     }))
+  //   );
 
-      <main className="main">
-        <div className="earth-container">
-          <Cobe markers={filteredData} />
+  //   console.log(markers);
+  //   setFilteredData(markers);
+  // };
+
+  // const updateTimeline = (selectedSong) => {
+  //   const timelineData = selectedSong.covers.map(cover => {
+  //     return {
+  //       date: new Date(cover.release_year), // 假设每个cover有一个releaseDate属性
+  //       // details: cover.details // 其他需要在时间线中显示的数据
+  //     };
+  //   });
+
+  //   console.log(timelineData);
+  //   setFilteredData(timelineData);
+  // };
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <header className="bg-black py-4">
+        <h1 className="text-center text-3xl font-bold">ABBAVERSE</h1>
+      </header>
+
+      {/* <main className="flex-grow flex justify-center items-center p-4"> */}
+      <main className="flex flex-col lg:flex-row flex-grow p-4">
+        <div className="w-full lg:w-1/3 xl:w-1/2">
+          <Timeline data={timelineData} />
         </div>
-        <div>
+        <div className="w-full max-w-full h-full max-h-full flex justify-center items-start">
+          <Cobe markers={markers} />
+        </div>
+        <div className="w-full lg:w-1/3 xl:w-1/2 p-4 flex flex-col">
           <FilterPanel songData={songData} onSearch={onSearch} />
-          {/* 展示搜索结果并处理单曲选择 */}
-          <SearchResults
-            results={searchResults}
-            onSelectSong={updateGlobalMarkers}
-          />
+          {/* Display search results and handle song selection */}
+          <div className="max-h-[60vh] overflow-auto">
+            <SearchResults
+              results={searchResults}
+              onSelectSong={updateRender}
+            />
+          </div>
         </div>
       </main>
     </div>
