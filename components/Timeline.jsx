@@ -165,7 +165,6 @@ export function Timeline({ data }) {
       <Modal
         isVisible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
-        children={modalContent}
       >
         {modalContent}
       </Modal>
