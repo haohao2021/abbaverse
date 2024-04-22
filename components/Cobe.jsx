@@ -5,6 +5,12 @@ import { useSpring } from 'react-spring';
 export function Cobe({ markers }) {
   const canvasRef = useRef();
   const globeRef = useRef();
+
+  const locationToAngles = (lat, long) => {
+    return [Math.PI - ((long * Math.PI) / 180 - Math.PI / 2), (lat * Math.PI) / 180];
+  }
+  const focusRef = useRef([0, 0]);  // Initially no rotation
+
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
   const [scale, setScale] = useState(1); // 初始缩放值
@@ -21,6 +27,8 @@ export function Cobe({ markers }) {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+
 
     const updateGlobe = () => {
       let width = canvas.offsetWidth;
@@ -61,6 +69,8 @@ export function Cobe({ markers }) {
           // Ensure the width and height are updated on resize
           state.width = width * 2;
           state.height = width * 2;
+
+          
         },
       });
 
@@ -129,6 +139,13 @@ export function Cobe({ markers }) {
         }}
         
       />
+       <div className="flex flex-col md:flex-row justify-center items-center control-buttons" style={{ gap: '.5rem' }}>
+        Rotate to:
+        <button onClick={() => focusRef.current = locationToAngles(37.78, -122.412)}>📍 San Francisco</button>
+        <button onClick={() => focusRef.current = locationToAngles(52.52, 13.405)}>📍 Berlin</button>
+        <button onClick={() => focusRef.current = locationToAngles(35.676, 139.65)}>📍 Tokyo</button>
+        <button onClick={() => focusRef.current = locationToAngles(-34.60, -58.38)}>📍 Buenos Aires</button>
+      </div>
     </div>
   );
 }
