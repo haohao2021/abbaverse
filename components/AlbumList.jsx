@@ -1,5 +1,5 @@
 const AlbumList = ({ albums, onAlbumClick }) => (
-  <div className="grid grid-cols-2 gap-4 p-4">
+  <div className="grid grid-cols-3 gap-4 p-4">
     {albums.map((album) => (
       <div
         key={album.id}
@@ -11,10 +11,10 @@ const AlbumList = ({ albums, onAlbumClick }) => (
           alt={`Cover of ${album.name}`}
           className="w-full"
         />
-        <div className="p-2 bg-gray-700 text-white">
+        {/* <div className="p-2 bg-gray-700 text-white">
           <h3 className="text-lg font-semibold">{album.name}</h3>
           <p className="text-sm">{album.release_date}</p>
-        </div>
+        </div> */}
       </div>
     ))}
   </div>

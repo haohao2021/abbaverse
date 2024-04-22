@@ -122,8 +122,9 @@ export default function Home() {
             allowfullscreen=""
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
+            className="mb-4"
           ></iframe>
-          <FilterPanel songData={songData} onSearch={onSearch} />
+          <FilterPanel songData={songData} onSearch={onSearch} className="mt-4"  />
 
           {/* Display search results and handle song selection */}
           {showSearchResults && (

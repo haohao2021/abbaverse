@@ -61,7 +61,7 @@ const FilterPanel = ({ songData, onSearch, onFilter }) => {
           id="searchTitleInput"
         />
       </div>
-      <div>
+      {/* <div>
         <label htmlFor="year-slider" className="block text-sm font-medium text-gray-400">
           Release Year: {selectedYear}
         </label>
@@ -74,7 +74,7 @@ const FilterPanel = ({ songData, onSearch, onFilter }) => {
           className="w-full h-2 bg-gray-700 rounded-md cursor-pointer focus:outline-none focus:ring-0"
           id="year-slider"
         />
-      </div>
+      </div> */}
     </div>
   );
   
