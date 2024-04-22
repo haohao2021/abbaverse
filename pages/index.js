@@ -3,6 +3,7 @@ import Cobe from "../components/Cobe";
 import Timeline from "../components/Timeline";
 import FilterPanel from "../components/FilterPanel";
 import SearchResults from "../components/SearchResults";
+import SongList from "@/components/SongList";
 import data from "../public/data.json";
 
 export default function Home() {
@@ -11,34 +12,66 @@ export default function Home() {
   const [markers, setMarkers] = useState([]);
   const [timelineData, setTimelineData] = useState([]);
   const [searchResults, setSearchResults] = useState({});
+  const [showSearchResults, setShowSearchResults] = useState(false);
+
   useEffect(() => {
     setSongData(data);
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://open.spotify.com/embed/iframe-api/v1";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const onSearch = (filteredData) => {
-    setSearchResults(filteredData); // 更新搜索结果而不是直接过滤标记
+    if (filteredData) {
+      setShowSearchResults(true); // 显示搜索结果列表
+      setSearchResults(filteredData); // 更新搜索结果而不是直接过滤标记
+    } else {
+      setShowSearchResults(false); // 隐藏搜索结果列表
+    }
   };
 
-  const updateRender = (selectedSong) => {
-    const markers = Object.values(selectedSong.covers).flatMap((cover) =>
-      cover.details.map((detail) => ({
-        location: cover.location,
-        size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
-      }))
+  const updateRender = (selectedSongs) => {
+    // 迭代所有选中的歌曲来创建标记
+    const markers = selectedSongs.flatMap((song) =>
+      Object.values(song.covers).flatMap((cover) =>
+        cover.details.map((detail) => ({
+          location: cover.location,
+          size: 0.05
+          // size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
+        }))
+      )
     );
 
-    const timelineData = Object.values(selectedSong.covers).flatMap((cover) =>
-      cover.details.map((detail) => ({
-        song: detail.song_name,
-        artist: detail.artist,
-        date: new Date(detail.release_year, 0), // 确保这里返回了一个对象
-        song_url: detail.song_url,
-        artist_url: detail.artist_url
-      }))
+    // 迭代所有选中的歌曲来创建时间线数据
+    const timelineData = selectedSongs.flatMap((song) =>
+      Object.values(song.covers).flatMap((cover) =>
+        cover.details.map((detail) => ({
+          song: detail.song_name,
+          artist: detail.artist,
+          date: new Date(detail.release_year, 0), 
+          song_url: detail.song_url,
+          artist_url: detail.artist_url,
+        }))
+      )
     );
 
+    // 更新状态
     setMarkers(markers);
     setTimelineData(timelineData);
+  };
+
+  const handleFilteredData = (songs) => {
+    setFilteredData(songs);
+    updateRender(songs);
+    setShowSearchResults(false); // 隐藏搜索结果列表
   };
 
   // const updateGlobalMarkers = (selectedSong) => {
@@ -80,18 +113,37 @@ export default function Home() {
           <Cobe markers={markers} />
         </div>
         <div className="w-full lg:w-1/3 xl:w-1/2 p-4 flex flex-col">
+          <iframe
+            style={{ borderRadius: "12px" }}
+            src="https://open.spotify.com/embed/track/2TxCwUlqaOH3TIyJqGgR91?utm_source=generator"
+            width="100%"
+            height="152"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
           <FilterPanel songData={songData} onSearch={onSearch} />
+
           {/* Display search results and handle song selection */}
-          <div className="max-h-[60vh] overflow-auto">
-            <SearchResults
-              results={searchResults}
-              onSelectSong={updateRender}
-            />
-          </div>
+          {showSearchResults && (
+            <div className="max-h-[60vh] overflow-auto">
+              <SearchResults
+                results={searchResults}
+                onSelectSong={(song) => handleFilteredData([song])}
+              />
+            </div>
+          )}
+
+          {!showSearchResults && (
+            <SongList onSelectTracks={handleFilteredData} />
+          )}
+
+          <div></div>
         </div>
       </main>
     </div>
-  )
+  );
 }
 
 // =================

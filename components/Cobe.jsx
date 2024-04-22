@@ -69,14 +69,14 @@ export function Cobe({ markers }) {
 
     updateGlobe();
 
-    const handleWheel = (e) => {
-      e.preventDefault();
-      setScale((prevScale) => Math.max(0, prevScale - e.deltaY * 0.001));
-    };
+    // const handleWheel = (e) => {
+    //   e.preventDefault();
+    //   setScale((prevScale) => Math.max(0, prevScale - e.deltaY * 0.001));
+    // };
 
     // canvasRef.current.addEventListener('wheel', handleWheel, { passive: false });
 
-    canvas.addEventListener('wheel', handleWheel, { passive: false });
+    // canvas.addEventListener('wheel', handleWheel, { passive: false });
 
     window.addEventListener('resize', updateGlobe);
 
@@ -85,9 +85,9 @@ export function Cobe({ markers }) {
         globeRef.current.destroy();
       }
 
-      if (canvas) {
-        canvas.removeEventListener('wheel', handleWheel);
-      }
+      // if (canvas) {
+      //   canvas.removeEventListener('wheel', handleWheel);
+      // }
       window.removeEventListener('resize', updateGlobe);
 
       // window.removeEventListener('resize', onResize);

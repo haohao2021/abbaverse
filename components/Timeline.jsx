@@ -69,47 +69,41 @@ export function Timeline({ data }) {
 
     console.log(data);
 
-    // timeline
-    //   .selectAll(".dot")
-    //   .data(data)
-    //   .enter()
-    //   .append("circle")
-    //   .attr("class", "dot")
-    //   .attr("cx", () => randomX()) // 随机横坐标值
-    //   .attr("cy", (d) => yScale(d.date)) // 确保 d.date 是一个日期对象
-    //   .attr("r", 5) // 散点大小
-    //   .attr("fill", dotColor);
-
-    // 绘制散点，并保存对它们的引用
     const dots = timeline
       .selectAll(".dot")
       .data(data)
       .enter()
       .append("circle")
       .attr("class", "dot")
-      .attr("cx", () => randomX()) 
+      .attr("cx", () => randomX())
       .attr("cy", (d) => yScale(d.date)) // 确保 d.date 是一个日期对象
-      .attr("r", 5) 
+      .attr("r", 5)
       .attr("fill", dotColor);
 
+    // dots
+    //   .enter()
+    //   .append("circle")
+    //   .attr("class", "dot")
+    //   .attr("cx", () => randomX())
+    //   .attr("cy", (d) => yScale(d.date))
+    //   .attr("r", 0)
+    //   .attr("fill", "rgba(255, 255, 255, 0.5)")
+    //   .transition()
+    //   .duration(750)
+    //   .attr("r", 5);
 
-    // timeline
-    //   .selectAll(".dot")
-    //   .on("mouseover", (event, d) => {
-    //     // 显示浮窗
-    //   })
-    //   .on("mouseout", (event, d) => {
-    //     // 隐藏浮窗
-    //   })
-    //   .on("click", (event, d) => {
-    //     // 弹出窗口显示歌曲的所有数据
-    //   });
+    // dots
+    //   .transition()
+    //   .duration(750)
+    //   .attr("cx", () => randomX())
+    //   .attr("cy", (d) => yScale(d.date));
 
-    // 创建一个浮窗的 div 元素
+    // dots.exit().transition().duration(750).attr("r", 0).remove();
+
     const tooltip = d3
       .select("body")
       .append("div")
-      .attr("class", "tooltip") 
+      .attr("class", "tooltip")
       .style("visibility", "hidden")
       .style("position", "absolute")
       .style("background", "white")
@@ -130,24 +124,8 @@ export function Timeline({ data }) {
       })
       .on("click", (event, d) => {
         handleDotClick(d);
-
-        
-        //     const infoWindow = window.open(
-        //       "",
-        //       "Info",
-        //       "width=400,height=300,scrollbars=1"
-        //     );
-        //     const content = `
-        //     <p>Song: ${d.song}</p>
-        //     <p>Artist: ${d.artist}</p>
-        //     <p>Release Year: ${d.date.getFullYear()}</p>
-        //     <p><a href="${d.song_url}" target="_blank">Song URL</a></p>
-        //     <p><a href="${d.artist_url}" target="_blank">Artist URL</a></p>
-        //   `;
-        //     infoWindow.document.write(content);
       });
 
-    // 监听窗口大小变化并更新时间线
     const handleResize = () => {
       // 更新比例尺的范围、绘制新的轴等
     };
