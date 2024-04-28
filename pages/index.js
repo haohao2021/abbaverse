@@ -7,144 +7,160 @@ import SongList from "@/components/SongList";
 import data from "../public/data.json";
 
 export default function Home() {
-  const [songData, setSongData] = useState({});
-  const [filteredData, setFilteredData] = useState([]);
-  const [markers, setMarkers] = useState([]);
-  const [timelineData, setTimelineData] = useState([]);
-  const [searchResults, setSearchResults] = useState({});
-  const [showSearchResults, setShowSearchResults] = useState(false);
+    const [songData, setSongData] = useState({});
+    const [filteredData, setFilteredData] = useState([]);
+    const [markers, setMarkers] = useState([]);
+    const [timelineData, setTimelineData] = useState([]);
+    const [searchResults, setSearchResults] = useState({});
+    const [showSearchResults, setShowSearchResults] = useState(false);
 
-  useEffect(() => {
-    setSongData(data);
-  }, []);
+    useEffect(() => {
+        setSongData(data);
+        // 预设 "Mamma Mia" 数据
+        const mammaMia = data["Mamma mia (ABBA)"]; // 确保这里的键匹配数据中的正确键
+        if (mammaMia) {
+            handleFilteredData([mammaMia]);
+        }
+    }, []);
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://open.spotify.com/embed/iframe-api/v1";
-    script.async = true;
-    document.body.appendChild(script);
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://open.spotify.com/embed/iframe-api/v1";
+        script.async = true;
+        document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
+    const onSearch = (filteredData) => {
+        if (filteredData) {
+            setShowSearchResults(true); // 显示搜索结果列表
+            setSearchResults(filteredData); // 更新搜索结果而不是直接过滤标记
+        } else {
+            setShowSearchResults(false); // 隐藏搜索结果列表
+        }
     };
-  }, []);
 
-  const onSearch = (filteredData) => {
-    if (filteredData) {
-      setShowSearchResults(true); // 显示搜索结果列表
-      setSearchResults(filteredData); // 更新搜索结果而不是直接过滤标记
-    } else {
-      setShowSearchResults(false); // 隐藏搜索结果列表
-    }
-  };
+    const updateRender = (selectedSongs) => {
+        // 迭代所有选中的歌曲来创建标记
+        const markers = selectedSongs.flatMap((song) =>
+            Object.values(song.covers).flatMap((cover) =>
+                cover.details.map((detail) => ({
+                    location: cover.location,
+                    size: 0.05,
+                    // size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
+                }))
+            )
+        );
 
-  const updateRender = (selectedSongs) => {
-    // 迭代所有选中的歌曲来创建标记
-    const markers = selectedSongs.flatMap((song) =>
-      Object.values(song.covers).flatMap((cover) =>
-        cover.details.map((detail) => ({
-          location: cover.location,
-          size: 0.05
-          // size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
-        }))
-      )
+        // 迭代所有选中的歌曲来创建时间线数据
+        const timelineData = selectedSongs.flatMap((song) =>
+            Object.values(song.covers).flatMap((cover) =>
+                cover.details.map((detail) => ({
+                    song: detail.song_name,
+                    artist: detail.artist,
+                    date: new Date(detail.release_year, 0),
+                    song_url: detail.song_url,
+                    artist_url: detail.artist_url,
+                }))
+            )
+        );
+
+        // 更新状态
+        setMarkers(markers);
+        setTimelineData(timelineData);
+    };
+
+    const handleFilteredData = (songs) => {
+        setFilteredData(songs);
+        updateRender(songs);
+        setShowSearchResults(false);
+    };
+
+    const handleSongSelect = (song) => {
+        handleFilteredData([song]);
+        const iframeSrc = `https://open.spotify.com/embed/track/${song.spotifyId}?utm_source=generator&theme=0`;
+        document.getElementById("spotify-iframe").src = iframeSrc;
+    };
+
+    // const updateGlobalMarkers = (selectedSong) => {
+    //   const markers = Object.values(selectedSong.covers).flatMap((cover) =>
+    //     cover.details.map((detail) => ({
+    //       location: cover.location,
+    //       size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
+    //     }))
+    //   );
+
+    //   console.log(markers);
+    //   setFilteredData(markers);
+    // };
+
+    // const updateTimeline = (selectedSong) => {
+    //   const timelineData = selectedSong.covers.map(cover => {
+    //     return {
+    //       date: new Date(cover.release_year), // 假设每个cover有一个releaseDate属性
+    //       // details: cover.details // 其他需要在时间线中显示的数据
+    //     };
+    //   });
+
+    //   console.log(timelineData);
+    //   setFilteredData(timelineData);
+    // };
+
+    return (
+        <div className="min-h-screen bg-black text-white">
+            <header className="bg-black py-4">
+                <h1 className="text-center text-3xl font-bold">ABBAVERSE</h1>
+            </header>
+
+            {/* <main className="flex-grow flex justify-center items-center p-4"> */}
+            <main className="flex flex-col lg:flex-row flex-grow p-4">
+                <div className="w-full lg:w-1/3 xl:w-1/2">
+                    <Timeline data={timelineData} />
+                </div>
+                <div className="w-full max-w-full h-full max-h-full flex justify-center items-start">
+                    <Cobe markers={markers} />
+                </div>
+                <div className="w-full lg:w-1/3 xl:w-1/2 p-4 flex flex-col">
+                    <iframe
+                        id="spotify-iframe"
+                        style={{ borderRadius: "12px" }}
+                        src="https://open.spotify.com/embed/track/2TxCwUlqaOH3TIyJqGgR91?utm_source=generator&theme=0"
+                        width="100%"
+                        height="152"
+                        frameBorder="0"
+                        allowFullScreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        className="mb-4"
+                    ></iframe>
+                    <FilterPanel
+                        songData={songData}
+                        onSearch={onSearch}
+                        className="mt-4"
+                    />
+
+                    {/* Display search results and handle song selection */}
+                    {showSearchResults && (
+                        <div className="max-h-[60vh] overflow-auto">
+                            <SearchResults
+                                results={searchResults}
+                                onSelectSong={(song) => handleSongSelect(song)}
+                            />
+                        </div>
+                    )}
+
+                    {!showSearchResults && (
+                        <SongList onSelectTracks={handleFilteredData} />
+                    )}
+
+                    <div></div>
+                </div>
+            </main>
+        </div>
     );
-
-    // 迭代所有选中的歌曲来创建时间线数据
-    const timelineData = selectedSongs.flatMap((song) =>
-      Object.values(song.covers).flatMap((cover) =>
-        cover.details.map((detail) => ({
-          song: detail.song_name,
-          artist: detail.artist,
-          date: new Date(detail.release_year, 0), 
-          song_url: detail.song_url,
-          artist_url: detail.artist_url,
-        }))
-      )
-    );
-
-    // 更新状态
-    setMarkers(markers);
-    setTimelineData(timelineData);
-  };
-
-  const handleFilteredData = (songs) => {
-    setFilteredData(songs);
-    updateRender(songs);
-    setShowSearchResults(false); // 隐藏搜索结果列表
-  };
-
-  // const updateGlobalMarkers = (selectedSong) => {
-  //   const markers = Object.values(selectedSong.covers).flatMap((cover) =>
-  //     cover.details.map((detail) => ({
-  //       location: cover.location,
-  //       size: (cover.count * 0.01).toFixed(2), // 假设每个cover有count属性
-  //     }))
-  //   );
-
-  //   console.log(markers);
-  //   setFilteredData(markers);
-  // };
-
-  // const updateTimeline = (selectedSong) => {
-  //   const timelineData = selectedSong.covers.map(cover => {
-  //     return {
-  //       date: new Date(cover.release_year), // 假设每个cover有一个releaseDate属性
-  //       // details: cover.details // 其他需要在时间线中显示的数据
-  //     };
-  //   });
-
-  //   console.log(timelineData);
-  //   setFilteredData(timelineData);
-  // };
-
-  return (
-    <div className="min-h-screen bg-black text-white">
-      <header className="bg-black py-4">
-        <h1 className="text-center text-3xl font-bold">ABBAVERSE</h1>
-      </header>
-
-      {/* <main className="flex-grow flex justify-center items-center p-4"> */}
-      <main className="flex flex-col lg:flex-row flex-grow p-4">
-        <div className="w-full lg:w-1/3 xl:w-1/2">
-          <Timeline data={timelineData} />
-        </div>
-        <div className="w-full max-w-full h-full max-h-full flex justify-center items-start">
-          <Cobe markers={markers} />
-        </div>
-        <div className="w-full lg:w-1/3 xl:w-1/2 p-4 flex flex-col">
-          <iframe
-            style={{ borderRadius: "12px" }}
-            src="https://open.spotify.com/embed/track/2TxCwUlqaOH3TIyJqGgR91?utm_source=generator"
-            width="100%"
-            height="152"
-            frameBorder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            className="mb-4"
-          ></iframe>
-          <FilterPanel songData={songData} onSearch={onSearch} className="mt-4"  />
-
-          {/* Display search results and handle song selection */}
-          {showSearchResults && (
-            <div className="max-h-[60vh] overflow-auto">
-              <SearchResults
-                results={searchResults}
-                onSelectSong={(song) => handleFilteredData([song])}
-              />
-            </div>
-          )}
-
-          {!showSearchResults && (
-            <SongList onSelectTracks={handleFilteredData} />
-          )}
-
-          <div></div>
-        </div>
-      </main>
-    </div>
-  );
 }
 
 // =================

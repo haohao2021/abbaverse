@@ -10,56 +10,55 @@ import data from "../public/data.json";
 // ];
 
 const SongList = ({ onSelectTracks }) => {
-  const [selectedAlbum, setSelectedAlbum] = useState(null);
-  const [selectedSongs, setSelectedSongs] = useState([]);
+    const [selectedAlbum, setSelectedAlbum] = useState(null);
+    const [selectedSongs, setSelectedSongs] = useState([]);
 
+    useEffect(() => {
+        if (selectedSongs.length > 0) {
+            onSelectTracks(selectedSongs);
+        }
+    }, [selectedSongs]);
 
+    const handleAlbumClick = (albumId) => {
+        const album = discog.albums.find((a) => a.id === albumId);
+        setSelectedAlbum(album);
+    };
 
-  useEffect(() => {
-    if (selectedSongs.length > 0) {
-      onSelectTracks(selectedSongs)
-    }
-  }, [selectedSongs]);
+    const handleSongSelect = (song) => {
+        setSelectedSongs((prevSelected) => {
+            if (prevSelected.includes(song)) {
+                return prevSelected.filter((s) => s !== song);
+            } else {
+                return [...prevSelected, song];
+            }
+        });
+    };
 
+    const handleBackClick = () => {
+        setSelectedAlbum(null);
+    };
 
-
-  const handleAlbumClick = (albumId) => {
-    const album = discog.albums.find((a) => a.id === albumId);
-    setSelectedAlbum(album);
-  };
-
-  const handleSongSelect = (song) => {
-    setSelectedSongs((prevSelected) => {
-      if (prevSelected.includes(song)) {
-        return prevSelected.filter((s) => s !== song);
-      } else {
-        return [...prevSelected, song];
-      }
-    });
-  };
-
-  const handleBackClick = () => {
-    setSelectedAlbum(null);
-  };
-
-  return (
-    <div>
-      {!selectedAlbum ? (
-        <div className="album-list">
-          <AlbumList albums={discog.albums} onAlbumClick={handleAlbumClick} />
+    return (
+        <div>
+            {!selectedAlbum ? (
+                <div className="album-list">
+                    <AlbumList
+                        albums={discog.albums}
+                        onAlbumClick={handleAlbumClick}
+                    />
+                </div>
+            ) : (
+                <div className="song-list">
+                    <button onClick={handleBackClick}>← Back to albums</button>
+                    <AlbumTracks
+                        album={selectedAlbum}
+                        onSongSelect={handleSongSelect}
+                        selectedSongs={selectedSongs}
+                    />
+                </div>
+            )}
         </div>
-      ) : (
-        <div className="song-list">
-          <button onClick={handleBackClick}>← Back to albums</button>
-          <AlbumTracks
-            album={selectedAlbum}
-            onSongSelect={handleSongSelect}
-            selectedSongs={selectedSongs}
-          />
-        </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default SongList;
