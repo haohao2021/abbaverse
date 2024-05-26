@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import createGlobe from "cobe";
 import { useSpring } from "react-spring";
 

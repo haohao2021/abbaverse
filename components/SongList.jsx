@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AlbumList from "./AlbumList";
 import AlbumTracks from "./AlbumTracks";
 import discog from "../public/discog.json";

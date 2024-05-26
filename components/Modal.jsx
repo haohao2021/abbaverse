@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dialog } from '@headlessui/react';
 
 const Modal = ({ isVisible, onClose, children }) => {
