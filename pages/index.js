@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Cobe from "../components/Cobe";
 import DotsTimeline from "../components/DotsTimeline";
-import DensityPlot from "@/removed/DensityPlot";
 import FilterPanel from "../components/FilterPanel";
 import SearchResults from "../components/SearchResults";
 import SongList from "@/components/SongList";

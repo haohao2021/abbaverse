@@ -26,39 +26,9 @@ const AlbumList = ({ albums, onAlbumClick }) => {
                             alt={`Cover of ${album.name}`}
                             className="w-full"
                         />
-                        {/* <div className="p-2 bg-gray-700 text-white">
-          <h3 className="text-lg font-semibold">{album.name}</h3>
-          <p className="text-sm">{album.release_date}</p>
-        </div> */}
                     </div>
                 ))}
-                <div>
-                    <img
-                        src={`/images/about.png`}
-                        alt="About"
-                        className="cursor-pointer"
-                        onClick={openModal}
-                    />
-                    {modalIsOpen && (
-                        <div
-                            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
-                            onClick={closeModal}
-                        >
-                            <div
-                                className="bg-gray-900 text-white p-5 rounded shadow-lg max-w-md w-full relative"
-                                onClick={(e) => e.stopPropagation()}
-                            >
-                                <button
-                                    className="absolute top-2 right-2 text-white"
-                                    onClick={closeModal}
-                                >
-                                    ×
-                                </button>
-                                <About />
-                            </div>
-                        </div>
-                    )}
-                </div>
+                <About />
             </div>
         </>
     );
