@@ -35,10 +35,18 @@ const About = () => {
                             About the Project
                         </h2>
                         <section>
-                            <h3 className="text-xl font-semibold">
+                            <h3 className="text-xl font-semibold mb-4">
                                 Demo video
                             </h3>
-                            {/* Placeholder for video or video link */}
+                            <iframe
+                                width="560"
+                                height="315"
+                                src="https://www.youtube.com/embed/NGszMrgAzrI"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title="YouTube video player"
+                            ></iframe>
                         </section>
                         <section>
                             <h3 className="text-xl font-semibold mt-6">Team</h3>
