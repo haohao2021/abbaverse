@@ -6259,7 +6259,7 @@
                         "release_year": 1973,
                         "song_url": "https://secondhandsongs.com/performance/778649/versions",
                         "artist_url": "https://secondhandsongs.com/artist/82744",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/778649/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     },
                     {
                         "song_name": "Tarvitaan mies tarvitaan nainen",
@@ -6348,7 +6348,7 @@
                         "release_year": 2001,
                         "song_url": "https://secondhandsongs.com/performance/981796/versions",
                         "artist_url": "https://secondhandsongs.com/artist/138675",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Ring Ring",
@@ -6726,7 +6726,7 @@
                         "release_year": 2012,
                         "song_url": "https://secondhandsongs.com/performance/834853/versions",
                         "artist_url": "https://secondhandsongs.com/artist/141955",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/834853/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     },
                     {
                         "song_name": "Ring Ring",
@@ -7457,7 +7457,7 @@
                         "release_year": 2002,
                         "song_url": "https://secondhandsongs.com/performance/493635/versions",
                         "artist_url": "https://secondhandsongs.com/artist/6472",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "The Winner Takes It All",
@@ -9369,7 +9369,7 @@
                         "release_year": 1994,
                         "song_url": "https://secondhandsongs.com/performance/795022/versions",
                         "artist_url": "https://secondhandsongs.com/artist/10791",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Lay All Your Love on Me",
@@ -10028,7 +10028,7 @@
                         "release_year": 1995,
                         "song_url": "https://secondhandsongs.com/performance/621044/versions",
                         "artist_url": "https://secondhandsongs.com/artist/831",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     }
                 ],
                 "location": [
@@ -10215,7 +10215,7 @@
                         "release_year": 2020,
                         "song_url": "https://secondhandsongs.com/performance/1120555/versions",
                         "artist_url": "https://secondhandsongs.com/artist/99220",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     }
                 ],
                 "location": [
@@ -10249,7 +10249,7 @@
                         "release_year": 1997,
                         "song_url": "https://secondhandsongs.com/performance/1088486/versions",
                         "artist_url": "https://secondhandsongs.com/artist/126580",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Super Trouper",
@@ -11395,7 +11395,7 @@
                         "release_year": 1996,
                         "song_url": "https://secondhandsongs.com/performance/495575/versions",
                         "artist_url": "https://secondhandsongs.com/artist/830",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Waterloo",
@@ -11403,7 +11403,7 @@
                         "release_year": 2001,
                         "song_url": "https://secondhandsongs.com/performance/721699/versions",
                         "artist_url": "https://secondhandsongs.com/artist/100232",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Waterloo",
@@ -12866,7 +12866,7 @@
                         "release_year": 2008,
                         "song_url": "https://secondhandsongs.com/performance/79149/versions",
                         "artist_url": "https://secondhandsongs.com/artist/32675+32971+32972",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Mamma mia",
@@ -13681,7 +13681,7 @@
                         "release_year": 2002,
                         "song_url": "https://secondhandsongs.com/performance/1092800/versions",
                         "artist_url": "https://secondhandsongs.com/artist/177349",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Dancing Queen",
@@ -13737,7 +13737,7 @@
                         "release_year": 2008,
                         "song_url": "https://secondhandsongs.com/performance/104112/versions",
                         "artist_url": "https://secondhandsongs.com/artist/36316",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Dancing Queen",
@@ -13907,7 +13907,7 @@
                         "release_year": 1976,
                         "song_url": "https://secondhandsongs.com/performance/1530615/versions",
                         "artist_url": "https://secondhandsongs.com/artist/118292",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Read timed out. (read timeout=10)"
                     },
                     {
                         "song_name": "Dancing Queen",
@@ -14166,7 +14166,7 @@
                         "release_year": 1996,
                         "song_url": "https://secondhandsongs.com/performance/1504121/versions",
                         "artist_url": "https://secondhandsongs.com/artist/1700",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/1504121/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     },
                     {
                         "song_name": "Swedish Hit Medley: Hooked on a Feeling / Dancing Queen /  It Must Have Been Love /  The Sign / Cot\u2026",
@@ -14568,7 +14568,7 @@
                         "release_year": 2011,
                         "song_url": "https://secondhandsongs.com/performance/183171/versions",
                         "artist_url": "https://secondhandsongs.com/artist/55509",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/183171/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     },
                     {
                         "song_name": "ABBA Medley",
@@ -15416,7 +15416,7 @@
                         "release_year": 2023,
                         "song_url": "https://secondhandsongs.com/performance/1471169/versions",
                         "artist_url": "https://secondhandsongs.com/artist/219535",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/1471169/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     }
                 ],
                 "location": [
@@ -16867,7 +16867,7 @@
                         "release_year": 2008,
                         "song_url": "https://secondhandsongs.com/performance/760830/versions",
                         "artist_url": "https://secondhandsongs.com/artist/2252",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/760830/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     },
                     {
                         "song_name": "La vall\u00e9e",
@@ -19409,7 +19409,7 @@
                         "release_year": 1978,
                         "song_url": "https://secondhandsongs.com/performance/607111/versions",
                         "artist_url": "https://secondhandsongs.com/artist/12553",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/607111/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     }
                 ],
                 "location": [
@@ -19597,7 +19597,7 @@
                         "release_year": 2003,
                         "song_url": "https://secondhandsongs.com/performance/718065/versions",
                         "artist_url": "https://secondhandsongs.com/artist/144211",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/718065/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     },
                     {
                         "song_name": "Thank You for the Music",
@@ -19629,7 +19629,7 @@
                         "release_year": 2020,
                         "song_url": "https://secondhandsongs.com/performance/1504723/versions",
                         "artist_url": "https://secondhandsongs.com/artist/103760",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/1504723/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     },
                     {
                         "song_name": "Thank You for the Music",
@@ -19727,7 +19727,7 @@
                         "release_year": 2001,
                         "song_url": "https://secondhandsongs.com/performance/31908/versions",
                         "artist_url": "https://secondhandsongs.com/artist/15650",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/31908/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     },
                     {
                         "song_name": "Thank You for the Music",
@@ -19858,7 +19858,7 @@
                         "release_year": 2002,
                         "song_url": "https://secondhandsongs.com/performance/573323/versions",
                         "artist_url": "https://secondhandsongs.com/artist/112850",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/573323/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     },
                     {
                         "song_name": "Thank You for the Music",
@@ -19964,7 +19964,7 @@
                         "release_year": 1983,
                         "song_url": "https://secondhandsongs.com/performance/745604/versions",
                         "artist_url": "https://secondhandsongs.com/artist/136857",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/745604/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     },
                     {
                         "song_name": "Thank You for the Music",
@@ -21135,7 +21135,7 @@
                         "release_year": 1975,
                         "song_url": "https://secondhandsongs.com/performance/596555/versions",
                         "artist_url": "https://secondhandsongs.com/artist/65875+98573",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/596555/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     },
                     {
                         "song_name": "Om och om och om och om igen",
@@ -21251,7 +21251,7 @@
                         "release_year": 2006,
                         "song_url": "https://secondhandsongs.com/performance/222510/versions",
                         "artist_url": "https://secondhandsongs.com/artist/62776",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/222510/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     }
                 ],
                 "location": [
@@ -23302,7 +23302,7 @@
                         "release_year": 2004,
                         "song_url": "https://secondhandsongs.com/performance/500682/versions",
                         "artist_url": "https://secondhandsongs.com/artist/102238",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/500682/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     },
                     {
                         "song_name": "SOS",
@@ -23635,7 +23635,7 @@
                         "release_year": 2007,
                         "song_url": "https://secondhandsongs.com/performance/154204/versions",
                         "artist_url": "https://secondhandsongs.com/artist/49770",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/154204/versions (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fbd584e87f0>: Failed to establish a new connection: [Errno 61] Connection refused')))"
                     },
                     {
                         "song_name": "S.O.S.",
@@ -23643,7 +23643,7 @@
                         "release_year": 2020,
                         "song_url": "https://secondhandsongs.com/performance/1369436/versions",
                         "artist_url": "https://secondhandsongs.com/artist/206199+206278",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/1369436/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     },
                     {
                         "song_name": "S.O.S.",
@@ -23887,7 +23887,7 @@
                         "release_year": 1999,
                         "song_url": "https://secondhandsongs.com/performance/216/versions",
                         "artist_url": "https://secondhandsongs.com/artist/120",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/216/versions (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))"
                     },
                     {
                         "song_name": "S.O.S.",
@@ -24155,7 +24155,7 @@
                         "release_year": 2006,
                         "song_url": "https://secondhandsongs.com/performance/222507/versions",
                         "artist_url": "https://secondhandsongs.com/artist/62776",
-                        "language": "Unknown"
+                        "language": "Error: HTTPSConnectionPool(host='secondhandsongs.com', port=443): Max retries exceeded with url: /performance/222507/versions (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
                     }
                 ],
                 "location": [
